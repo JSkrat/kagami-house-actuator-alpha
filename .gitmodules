@@ -1,0 +1,3 @@
+[submodule "kagami-house-avr-core"]
+	path = fw/KagamiCore
+	url = https://github.com/JSkrat/kagami-house-avr-core.git
