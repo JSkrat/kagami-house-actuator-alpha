@@ -14,28 +14,14 @@
 // RF mode
 #define BUILD_TYPE BT_SLAVE
 
-/*** USART ***/
-#define BAUDRATE 200000
-
-
-/*** LCD ***/
-//#define USE_LCD
-#define portLCD PORTC
-#define poLCD_CS PORTC3
-#define poLCD_DATA PORTC4
-#define poLCD_CLK PORTC5
-#define poLCD_RST PORTC2
-
-#define LCD_WIDTH   96
-#define LCD_HEIGHT  68
-#define LCD_PAGES   9
-// высота букавы Ч 8 пикселей
-#define FONT_HEIGHT 8
-#define FONT_WIDTH  6
-#define LCD_ROWS    CEILING(LCD_HEIGHT, FONT_HEIGHT)
-#define LCD_COLUMNS CEILING(LCD_WIDTH, FONT_WIDTH)
-
-
+// advertisement
+#define USE_ADVERTISEMENT
+#define ADV_BUTTON_DDR DDRD
+#define ADV_BUTTON_PIN PIND6
+#define ADV_BUTTON_PORT PORTD
+#define ADV_LED_DDR DDRD
+#define ADV_LED_PIN PORTD7
+#define ADV_LED_PORT PORTD
 /*** LEDs ***/
 #define portLEDS PORTD
 #define poLED_D1 PORTD7

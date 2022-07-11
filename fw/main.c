@@ -11,10 +11,7 @@
 #include "KagamiCore/RF model.h"
 #include "RF custom functions.h"
 #include "KagamiCore/RF functions.h"
-//#include "../KagamiCore/UART parser.h"
-
-static int adv = 0;
-#define ADV_TRIGGER 2
+#include "KagamiCore/advertisement.h"
 
 int main(void)
 {
@@ -22,24 +19,13 @@ int main(void)
 	ACSR |= _BV(ACD);
 	rf_init();
 	functions_init(CRFUnits, unitsCount);
-	DDRD |= _BV(PORTD7); // adv led
-	DDRD &= ~_BV(PORTD6); // adv btn
+	RFCustomFunctionsInit();
+	advertisement_init();
 	set_sleep_mode(SLEEP_MODE_IDLE);
-	
 	sei();
 	
 	while (1) {
-		if (ADV_TRIGGER > adv) {
-			if (PIND & _BV(PIND6)) adv++;
-		} else {
-			adv = 0;
-			switchMode(emSearchMaster);
-		}
-		if (emSearchMaster == getRFMode()) {
-			PORTD |= _BV(PORTD7);
-		} else {
-			PORTD &= ~_BV(PORTD7);
-		}
+		advertisement_process();
 		sleep_mode();
 	}
 }

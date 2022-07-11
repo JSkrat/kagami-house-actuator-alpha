@@ -24,7 +24,7 @@ typedef struct {
 	uint8_t function;
 } tMapFunctionToPinItem;
 
-#define MAP_SIZE 12
+#define MAP_SIZE 10
 const tMapFunctionToPinItem map[MAP_SIZE];
 
 /*ISR(TIMER0_OVF_vect) {
